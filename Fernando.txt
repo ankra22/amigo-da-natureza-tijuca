@@ -1,0 +1,1 @@
+Consegui enviar a minha alteração do repositório local para o remoto.
