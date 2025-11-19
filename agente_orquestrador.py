@@ -226,22 +226,12 @@ Responda APENAS com uma palavra: clima, trilhas ou geral"""),
             traceback.print_exc()
 
     def _processar_clima(self, pergunta: str):
-        """Processa perguntas sobre clima"""
-
-        # Detectar se é clima atual ou previsão
-        palavras_previsao = ['previsão', 'previsao', 'próximos', 'proximos',
-                             'amanhã', 'amanha', 'semana', 'dias']
-
-        eh_previsao = any(palavra in pergunta.lower() for palavra in palavras_previsao)
-
+        """Processa perguntas sobre clima usando o agente de clima de forma natural"""
         try:
-            if eh_previsao:
-                print("📅 Buscando previsão do tempo...\n")
-                resultado = agente_clima.buscar_previsao(dias=3)
-            else:
-                print("🌤️  Buscando clima atual...\n")
-                resultado = agente_clima.buscar_clima_atual()
+            resultado = agente_clima.responder_clima(pergunta)
 
+            # Marcador para o app.py saber de onde começa a resposta útil
+            print("\nRESPOSTA:\n")
             print(resultado)
             print()
 
